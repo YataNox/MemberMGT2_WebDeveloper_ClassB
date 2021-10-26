@@ -50,6 +50,18 @@ public class MemberServlet extends HttpServlet {
 		ActionFactory af = ActionFactory.getInstance();
 		Action ac = af.getAction(command);
 		
+		// 실제 new 인스턴스의 생성과 execute()의 실행은 각 클래스들이 상속받은
+		// 부모 인터페이스(Action)의 레퍼런스 변수에 저장하고,
+		// 레퍼런스 변수명.execute로 실행합니다.
+		
+		// 각 클래스에 잇는 execute 메소드는 Action 인터페이스에 존재하는 추상메소드 입니다.
+		// 각 클래스가 Action 인터페이스를 상속(implements)하여, execute 메소드가 오버라이딩되면
+		// Aciton 인터페이스의 레퍼런스 변수로 자식 클래스의 execute 메소드를 호출하여 사용합니다.
+		
+		// 1. Action ac = null;
+		// 2. if(command.equals("loginForm")) ac = new LoginFormAction();
+		// 3. else if(command.equals("joinForm")) ac = new JoinFormAction();
+		
 		if(ac != null)
 			ac.execute(request, response);
 		else
