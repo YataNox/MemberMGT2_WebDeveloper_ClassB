@@ -14,10 +14,11 @@ public class ActionFactory {
 	public Action getAction(String command) {
 		Action ac = null;
 		
-		if(command.equals("loginForm")) ac = new LoginFormAction(); else
-		if(command.equals("login")) ac = new LoginAction(); else
-		if(command.equals("joinForm")) ac = new JoinFormAction(); else
-		if(command.equals("join")) ac = new JoinAction();
+		if(command.equals("loginForm")) ac = new LoginFormAction(); 
+		else if(command.equals("login")) ac = new LoginAction(); 
+		else if(command.equals("joinForm")) ac = new JoinFormAction(); 
+		else if(command.equals("join")) ac = new JoinAction();
+		else if(command.equals("idcheck")) ac = new IdCheckAction();
 		
 		return ac;
 	}
