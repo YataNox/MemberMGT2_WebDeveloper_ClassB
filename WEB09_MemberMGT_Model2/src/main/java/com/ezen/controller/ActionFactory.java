@@ -6,7 +6,10 @@ import com.ezen.controller.action.JoinAction;
 import com.ezen.controller.action.JoinFormAction;
 import com.ezen.controller.action.LoginAction;
 import com.ezen.controller.action.LoginFormAction;
+import com.ezen.controller.action.LogoutAction;
 import com.ezen.controller.action.MainAction;
+import com.ezen.controller.action.UpdateAction;
+import com.ezen.controller.action.UpdateFormAction;
 
 public class ActionFactory {
 	private ActionFactory() {}
@@ -22,7 +25,10 @@ public class ActionFactory {
 		else if(command.equals("join")) ac = new JoinAction();
 		else if(command.equals("idcheck")) ac = new IdCheckAction();
 		else if(command.equals("main")) ac = new MainAction();
-		
+		else if(command.equals("logout")) ac = new LogoutAction();
+		else if(command.equals("updateForm")) ac = new UpdateFormAction();
+		else if(command.equals("update")) ac = new UpdateAction();
+		//else if(command.equals("deleteMember")) ac = new DeleteMemberAction();
 		return ac;
 	}
 }
