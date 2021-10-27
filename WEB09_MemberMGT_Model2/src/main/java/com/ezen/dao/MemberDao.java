@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import com.ezen.dto.MemberDto;
 
@@ -116,5 +117,90 @@ public class MemberDao {
 		
 		close();
 		return result;
+	}
+
+	public ArrayList<MemberDto> selectMember() {
+		ArrayList<MemberDto> list = new ArrayList<MemberDto>();
+		
+		con = getConnection();
+		String sql = "select * from member";
+		try {
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				MemberDto mdto = new MemberDto();
+				mdto.setName(rs.getString("name"));
+				mdto.setUserid(rs.getString("userid"));
+				mdto.setUserpwd(rs.getString("userpwd"));
+				mdto.setEmail(rs.getString("email"));
+				mdto.setPhone(rs.getString("phone"));
+				mdto.setAdmin(rs.getInt("admin"));
+				
+				list.add(mdto);
+			}
+			 
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		close();
+		return list;
+	}
+	
+	public int updateMember(MemberDto mdto) 
+	{
+		int result = 0;
+		
+		con = getConnection();
+		String sql = "update member set name=?, userid=?, userpwd=?, email=?, phone=?, admin=? where userid= ?";
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, mdto.getName());
+			pstmt.setString(2, mdto.getUserid());
+			pstmt.setString(3, mdto.getUserpwd());
+			pstmt.setString(4, mdto.getEmail());
+			pstmt.setString(5, mdto.getPhone());
+			pstmt.setInt(6, mdto.getAdmin());
+			pstmt.setString(7, mdto.getUserid());
+			
+			result = pstmt.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+		close();
+		return result;
+	}
+
+	public void editAdmin(String userid) {
+		con = getConnection();
+		String sql = "select * from member where userid=?";
+		int admin=0;
+		try {
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				admin = rs.getInt("admin");
+				pstmt.close();
+			}
+			
+			sql = "update member set admin = ? where userid = ?";
+			pstmt = con.prepareStatement(sql);
+			if(admin == 1)
+				pstmt.setInt(1, 0);
+			else
+				pstmt.setInt(1, 1);
+			pstmt.setString(2, userid);
+			
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		close();
 	}
 }
