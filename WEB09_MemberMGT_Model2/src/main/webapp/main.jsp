@@ -20,7 +20,7 @@
 			<tr>
 				<td>
 					<input type="button" value ="로그아웃" onClick="location.href='member.do?command=logout'"/>
-					<input type="button" value ="회원정보변경" onClick="location.href='member.do?command=updateForm''"/>
+					<input type="button" value ="회원정보변경" onClick="location.href='member.do?command=updateForm'"/>
 					<input type="button" value ="회원탈퇴" onClick="location.href='member.do?command=deleteMember'"/>
 				</td>
 				<!-- 문자데이터들 사이에 EL문법이 껴들어서 조합 문자데이터 구성 가능합니다. -->
