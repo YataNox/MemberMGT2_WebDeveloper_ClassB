@@ -29,7 +29,7 @@ public class LoginAction implements Action {
 		}else if(mdto.getUserpwd().equals(userpwd)) {
 			HttpSession session = request.getSession();
 			session.setAttribute("loginUser", mdto);
-			url = "main.jsp";
+			url = "member.do?command=main";
 		}else if(!mdto.getUserpwd().equals(userpwd)) {
 			request.setAttribute("message", "비밀번호를 확인하세요.");
 		}else {
