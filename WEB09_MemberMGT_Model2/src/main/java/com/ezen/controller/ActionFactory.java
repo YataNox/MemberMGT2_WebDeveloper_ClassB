@@ -1,6 +1,7 @@
 package com.ezen.controller;
 
 import com.ezen.controller.action.Action;
+import com.ezen.controller.action.IdCheckAction;
 import com.ezen.controller.action.JoinAction;
 import com.ezen.controller.action.JoinFormAction;
 import com.ezen.controller.action.LoginAction;
