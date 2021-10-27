@@ -18,7 +18,7 @@ public class DeleteMemberAction implements Action {
 		
 		MemberDao mdao = MemberDao.getInstance();
 		mdao.deleteMember(mdto.getUserid()); // 로그인 회원의 레코드 삭제
-		
+		request.setAttribute("message", "회원탈퇴가 완료되었습니다.");
 		session.invalidate(); // 세션의 로그인 정보 삭제
 		
 		RequestDispatcher dp = request.getRequestDispatcher("member.do?command=loginForm");
