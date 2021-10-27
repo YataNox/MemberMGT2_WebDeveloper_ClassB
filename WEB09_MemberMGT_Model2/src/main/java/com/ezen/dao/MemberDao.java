@@ -47,4 +47,29 @@ public class MemberDao {
 		}
 	}
 
+	public MemberDto getMember(String userid) {
+		MemberDto mdto = null;
+		
+		con = getConnection();
+		String sql = "select * from member where userid= ?";
+		try {
+			 pstmt = con.prepareStatement(sql);
+			 pstmt.setString(1, userid);
+			 rs = pstmt.executeQuery();
+			 if(rs.next()) {
+				 mdto = new MemberDto();
+				 mdto.setName(rs.getString("name"));
+				 mdto.setUserid(rs.getString("userid"));
+				 mdto.setUserpwd(rs.getString("userpwd"));
+				 mdto.setEmail(rs.getString("email"));
+				 mdto.setPhone(rs.getString("phone"));
+				 mdto.setAdmin(rs.getInt("admin"));
+			 }
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		close();
+		return mdto;
+	}
+
 }
