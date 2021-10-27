@@ -14,7 +14,7 @@
 				
 				var inputid = document.frm.userid.value;
 				var opt = "toolbar=no, menubar=no, scrollbar=yes, resizable=no, width=500, height=200";
-				window.open("idcheck.do?userid=" + inputid, "idcheck", opt);
+				window.open("member.do?command=idcheck&userid=" + inputid, "idcheck", opt);
 			}
 			
 			function joinCheck(){
