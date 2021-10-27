@@ -20,7 +20,7 @@ public class JoinAction implements Action {
 		mdto.setUserpwd(request.getParameter("userpwd"));
 		mdto.setEmail(request.getParameter("email"));
 		mdto.setPhone(request.getParameter("phone"));
-		mdto.setAdmin(Integer.parseInt(request.getParameter("name")));
+		mdto.setAdmin(Integer.parseInt(request.getParameter("admin")));
 		MemberDao mdao = MemberDao.getInstance();
 		
 		int result = mdao.insertMember(mdto);
