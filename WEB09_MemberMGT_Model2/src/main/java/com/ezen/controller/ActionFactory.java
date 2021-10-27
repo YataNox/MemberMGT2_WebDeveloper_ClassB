@@ -6,6 +6,7 @@ import com.ezen.controller.action.JoinAction;
 import com.ezen.controller.action.JoinFormAction;
 import com.ezen.controller.action.LoginAction;
 import com.ezen.controller.action.LoginFormAction;
+import com.ezen.controller.action.MainAction;
 
 public class ActionFactory {
 	private ActionFactory() {}
@@ -20,6 +21,7 @@ public class ActionFactory {
 		else if(command.equals("joinForm")) ac = new JoinFormAction(); 
 		else if(command.equals("join")) ac = new JoinAction();
 		else if(command.equals("idcheck")) ac = new IdCheckAction();
+		else if(command.equals("main")) ac = new MainAction();
 		
 		return ac;
 	}
