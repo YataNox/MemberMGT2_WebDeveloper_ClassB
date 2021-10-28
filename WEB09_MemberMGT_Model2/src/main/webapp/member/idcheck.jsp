@@ -18,7 +18,7 @@
 	</head>
 	<body>
 		<form action="member.do" method="get" name="frm">
-			<input type="hidden" name="command" value="join">
+			<input type="hidden" name="command" value="idcheck">
 			아이디 : <input type="text" name="userid" value="${userid}">
 			<input type="submit" value="중복 체크">
 		</form> <br><br><br>
